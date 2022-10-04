@@ -26,7 +26,7 @@
                 echo "Modelo: ".$this-> modelo."<br>"; 
                 echo "Velocidad: ".$this-> velocidad."<br>"; 
                 echo "Caballaje: ".$this-> caballaje."<br>";
-                echo "Plazas: ".$this-> plazas;
+                echo "Plazas: ".$this-> plazas."<br>";
         }
         //Getters y Setters
         public function getColor()
