@@ -1,6 +1,6 @@
 <?php
-        //include("iToJson.php");
-    class Elemento {
+    include('./interfaces/iToJson.php');
+    class Elemento implements iToJson{
         private $name;
         private $description;
         private $seriesNumber;
@@ -9,18 +9,21 @@
         //Constructor
         public function __construct($name, $description, $seriesNumber, 
         $state, $priority) {
-            $this-> name = $name;
-            $this-> description = $description;
-            $this-> seriesNumber = $seriesNumber;
-            $this-> state = $state;
-            $this-> priority = $priority;
+            $this->name = $name;
+            $this->description = $description;
+            $this->seriesNumber = $seriesNumber;
+            $this->state = $state;
+            $this->priority = $priority;
         }
         //Métodos
-        /*
         public function toJson() {
-
+            $elementoInfo = '{"Nombre" : "'.$this->name.
+                '", "Descripcion" : "'.$this->description.
+                '", "Numero de serie" : "'.$this->seriesNumber.
+                '", "Estado" : "'.$this->state.
+                '", "Prioridad" : "'.$this->priority.'"}';
+            return $elementoInfo;
         }
-        */
         //Getters and Setters
         public function getName()
         {
