@@ -17,10 +17,9 @@
         }
         //Métodos
         public function acelerar(){
-            $this-> $velocidad++;
+            $this-> velocidad++;
         }     
         public function showCar(){
-                echo "Información del coche:<br>";
                 echo "Color: ".$this-> color."<br>";
                 echo "Marca: ".$this-> marca."<br>";
                 echo "Modelo: ".$this-> modelo."<br>"; 
@@ -90,6 +89,4 @@
                 return $this;
         }
     }
-    $nuevoCoche = new Car('Rojo', 'Renault', 'A' , '10' , '90' , '5');
-    $nuevoCoche -> showCar();
 ?>
