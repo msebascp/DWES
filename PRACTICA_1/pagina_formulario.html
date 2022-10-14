@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/headerStyle.css">
+    <link rel="stylesheet" href="./css/formStyle.css">
     <title>Formulario</title>
 </head>
 <body>
+    <div class="header">
+        <h1 id="titulo">Tienda de sensores</h1>
+        <ul id="navLista">
+            <li><a href="./index.html">Inicio</a></li>
+            <li><a href="./pagina_formulario.html">Formulario</a></li>
+            <li><a href="./pagina_tabla.html">Tabla</a></li>
+            <li><a href="./infoNosotros.html">Información sobre nosotros</a></li>
+            <li><a href="./galeria.html">Galería</a></li>
+        </ul>
+    </div>
     <form action="./ws/crearElemento.php" method="post" class="form">
-        <h2><a href="./index.html">Inicio</a></h2>
         <h1>Introduce los datos del sensor:</h1>
         <p>Nombre</p>
         <input type="text" name="name" class="input">

@@ -1,0 +1,30 @@
+.header {
+    color: white;
+    background-color:steelblue;
+    font-family: system-ui;
+}
+#titulo {
+    text-align: center;
+    margin: 0px;
+    padding: 25px;
+    padding-bottom: 10px;
+}
+#navLista {
+    text-align: center;
+    margin: 0px;
+    padding: 20px;
+    padding-top: 10px;
+}
+#navLista li {
+    display: inline;
+    padding: 6px;
+}
+#navLista li a:hover {
+    background-color: rgb(43, 146, 231);
+    border-radius: 12%;
+}
+#navLista li a {
+    text-decoration: none;
+    color: white;
+    font-size:larger;
+}
