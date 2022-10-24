@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/headerStyle.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Tabla</title>
 </head>
 <body>
@@ -19,22 +19,11 @@
             <li><a href="./galeria.html">Galería</a></li>
         </ul>
     </div>
-    <table border="1px">
-        <caption>Tabla de sensores</caption>
-        <tbody>
-            <tr>
-                <th>Nombre</th>
-                <th>Número de serie</th>
-                <th>Estado</th>
-                <th>Prioridad</th>
-            </tr>
-            <tr>
-                <td>Sensor 4</td>
-                <td>1234</td>
-                <td>Activo</td>
-                <td>Media</td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="container">
+        <input id="searchTable" type="text">
+        <table id="table">
+        </table>
+    </div>
+    <script src="./js/script.js"></script>
 </body>
 </html>

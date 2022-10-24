@@ -1,3 +1,90 @@
-#boxImgLanding {
-    max-width: 90%;
+body {
+    font-family:'Trebuchet MS', sans-serif;
+    background-color: #455559;
+    color: white;
+}
+/*HEADER*/
+.header {
+    background-color:#28403D;
+    text-align: center;
+}
+#titulo {
+    font-size: 45px;
+    margin: 0px;
+    padding: 25px;
+    padding-bottom: 10px;
+}
+#navLista {
+    margin: 0px;
+    padding: 20px;
+    padding-top: 10px;
+}
+#navLista li {
+    display: inline;
+}
+#navLista li a {
+    padding: 6px 15px 6px 15px;
+    color: white;
+    text-decoration: none;
+    font-size:23px;
+}
+#navLista li a:hover {
+    background-color: #182625;
+    border-radius: 15px;
+}
+#imgLanding {
+    width: 95%;
+    margin: 60px 20px 0px 20px;
+}
+/*CONTAINER*/
+#container{
+    color: white;
+    margin: 30px;
+}
+#container h1 {font-size: 30px;}
+#container p {font-size: 20px;}
+/*TABLA*/
+#searchTable {
+    width: 300px;
+}
+#table {
+    table-layout: fixed;
+    width: 100%;
+    border: 3px solid #2F3D40;
+    border-collapse: collapse;
+    text-align: center;
+}
+#table caption {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+th, td {
+    padding: 15px;
+    border: 1px solid #2F3D40;
+    font-size: 20px;
+}
+/*FORMULARIO*/
+#tituloForm{
+    font-size: 23px;
+}
+.texto{
+    margin-bottom: 8px;
+}
+#formulario{
+    width: 400px;
+    margin-left: 37%;
+}
+#botonForm{
+    margin-top: 15px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+#botonForm:hover{
+    background-color: #182625; 
+    color: white;
+}
+.inputRange{
+    margin-left: 10px;
+    margin-right: 10px;
 }

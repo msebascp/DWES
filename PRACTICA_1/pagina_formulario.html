@@ -21,21 +21,23 @@
             <li><a href="./galeria.html">Galería</a></li>
         </ul>
     </div>
-    <form action="./ws/crearElemento.php" method="post" class="form">
-        <h1>Introduce los datos del sensor:</h1>
-        <p>Nombre</p>
-        <input type="text" name="name" class="input">
-        <p>Descripción</p>
-        <input type="text" name="description" class="input">
-        <p>Número de serie</p>
-        <input type="text" name="seriesNumber" class="input">
-        <p>Estado</p>
-        <input type="checkbox" name="state" value="Activo" class="input"> Activo 
-        <p>Prioridad</p>
-        <input type="radio" name="priority"  value="Alta" class="input"> Alta
-        <input type="radio" name="priority"  value="Media" class="input"> Media
-        <input type="radio" name="priority"  value="Baja" class="input"> Baja <br>
-        <button type="submit"  class="boton">Confirmar</button>
-    </form>
+    <div id="container">
+        <form id="formulario" action="./ws/crearElemento.php" method="post" class="form">
+            <h1 id="tituloForm">Introduce los datos del sensor:</h1>
+            <p>Nombre</p>
+            <input type="text" name="name" class="input">
+            <p>Descripción</p>
+            <input type="text" name="description" class="input">
+            <p>Número de serie</p>
+            <input type="text" name="seriesNumber" class="input">
+            <p>Estado</p>
+            <input type="checkbox" name="state" value="Activo" class="input"> Activo 
+            <p>Prioridad</p>
+            <input type="radio" name="priority"  value="Alta" class="input"> Alta
+            <input type="radio" name="priority"  value="Media" class="input"> Media
+            <input type="radio" name="priority"  value="Baja" class="input"> Baja <br>
+            <button type="submit"  id="botonForm">Confirmar</button>
+        </form>
+    </div>
 </body>
 </html>
