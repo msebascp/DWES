@@ -38,19 +38,17 @@ const trabajarConTabla = function(lista) {
     //Controlamos la búsqueda del input
     inputTable = document.querySelector('#searchTable');
     inputTable.oninput = function() {
+        //Pongo el fondo predeterminado en caso de que no haya resultados
         for(let columna of table.rows) {
             columna.style.backgroundColor = '#455559';
         }
+        //Una vez se ha escrito más de 2 carácteres se empieza a buscar
         if(inputTable.value.length > 2){
-            for(let element of filasForm){
-                if(element.name.includes(inputTable.value) || element.description.includes(inputTable.value)) {
-                    for(let columna of table.rows) {
-                        let texto = columna.cells[0].innerHTML;
-                        let texto2 = columna.cells[1].innerHTML;
-                        if(texto == element.name || texto == element.description) {
-                            columna.style.backgroundColor = '#3D5A73';
-                        }
-                    }
+            for(let fila of table.rows) {
+                let texto = fila.cells[0].innerHTML;
+                let texto2 = fila.cells[1].innerHTML;
+                if(texto.includes(inputTable.value) || texto2.includes(inputTable.value)) {
+                    fila.style.backgroundColor = '#3D5A73';
                 }
             }
         }
