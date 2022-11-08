@@ -24,6 +24,7 @@
                 '", "Prioridad" : "'.$this->priority.'"}';
             return $elementoInfo;
         }
+        //Crear metodo save(), getAll()--devuelve todos los elementos
         //Getters and Setters
         public function getName()
         {
@@ -32,8 +33,6 @@
         public function setName($name)
         {
                 $this->name = $name;
-
-                return $this;
         }
         public function getDescription()
         {
@@ -42,8 +41,6 @@
         public function setDescription($description)
         {
                 $this->description = $description;
-
-                return $this;
         } 
         public function getSeriesNumber()
         {
@@ -52,8 +49,6 @@
         public function setSeriesNumber($seriesNumber)
         {
                 $this->seriesNumber = $seriesNumber;
-
-                return $this;
         }
         public function getState()
         {
@@ -62,8 +57,6 @@
         public function setState($state)
         {
                 $this->state = $state;
-
-                return $this;
         }
         public function getPriority()
         {
@@ -72,8 +65,6 @@
         public function setPriority($priority)
         {
                 $this->priority = $priority;
-
-                return $this;
         }
     }
 ?>

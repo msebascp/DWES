@@ -1,24 +1,20 @@
 const URL = 'https://valorant-api.com/v1/agents';
 const URL_maps = 'https://valorant-api.com/v1/maps';
-
+//let maps = [];
 window.onload = () => {
-    console.log('Ha cargado la página');
-
-    const peticion = new XMLHttpRequest();
-    peticion.open('GET', URL);
-    peticion.send();
-    peticion.onreadystatechange = () => {
-        if(peticion.readyState === XMLHttpRequest.DONE) {
-            const respuestaJson = JSON.parse(peticion.responseText);
-            cargaBotones(respuestaJson.data);
-        }
-    }
+    console.log('Ha cargado la pagina');
+    cargarPersonajes().then(personajes => cargaBotones(personajes.data));
+    //cargarMapas();
+    /*Promise.all([cargarMapas(), cargarPersonajes()]).
+    then(mapasYPersonajes => {
+        maps = mapasYPersonajes[0].data;
+        cargaBotones(mapasYPersonajes[1].data);
+    })*/
 };
 
 function cargaBotones(personajesJson) {
     const contenedor = document.querySelector('#botones');
     personajesJson.forEach(personaje => {
-        console.log(personaje);
         const boton = document.createElement('button');
         boton.innerHTML = `<img src="${personaje.displayIcon}" width="50px"/>
         <p>${personaje.displayName}</p>`;
@@ -40,29 +36,69 @@ function muestraImagen(personaje) {
     contenedor.appendChild(myAudio);
     const newBoton = document.createElement('button');
     newBoton.innerText = 'Jugar';
-    newBoton.onclick = () => mostrarMapa(contenedor);
+    newBoton.onclick = () => mostrarMapa(contenedor, personaje);
     contenedor.appendChild(newBoton);
 }
 
-function mostrarMapa(contenedor) {
-    const BoxMap = document.createElement('div');
-    const peticion = new XMLHttpRequest();
-    peticion.open('GET', URL_maps);
+async function mostrarMapa(contenedor, personaje) {
+    let boxMapExist = document.querySelector('#boxMap');
+    if(boxMapExist){
+        contenedor.removeChild(boxMapExist)
+    }
+    const boxMap = document.createElement('div');
+    boxMap.setAttribute('id', 'boxMap');
+    boxMap.innerHTML = '';
+    const img = document.createElement('img');
+    const maps = (await cargarMapas()).data;
+    let nAl = Math.floor(Math.random() * ((maps.length-1) - 0) + 0);
+    let map = maps[nAl];
+    img.setAttribute('src', map.splash);
+    img.setAttribute('width', '800px');
+    boxMap.appendChild(img);
+    //boton
+    const button2 = document.createElement('button');
+    button2.innerText = 'GUARDAR PARTIDA';
+    button2.onclick = () => guardarPartida(personaje, map);
+    boxMap.appendChild(button2);
+    contenedor.appendChild(boxMap);
+}
+function cargarPersonajes() {
+    return fetch(URL).then(response => response.json());
+    /*const peticion = new XMLHttpRequest();
+    peticion.open('GET', URL);
     peticion.send();
     peticion.onreadystatechange = () => {
         if(peticion.readyState === XMLHttpRequest.DONE) {
-            const respuestaJson = JSON.parse(peticion.responseText);
-            let max=0;
-            respuestaJson.data.forEach(element => {
-                max++;
-            })
-            let nAl = Math.floor(Math.random() * (max - 0) + 0);
-            const img = document.createElement('img');
-            img.setAttribute('src', respuestaJson.data[nAl].splash);
-            img.setAttribute('width', '800px');
-            BoxMap.innerHTML = ``;
-            BoxMap.innerHTML = `${img.outerHTML}`;
-            contenedor.appendChild(BoxMap);
+            const personajes = JSON.parse(peticion.responseText);
+            cargaBotones(personajes.data);
         }
+    }*/
+}
+
+async function cargarMapas() {
+    return fetch(URL_maps)
+    .then(response => response.json())
+    .catch(_ => alert('Falló'))
+    /*.then(mapas => {
+        maps = mapas.data;
+        cargarPersonajes();
     }
+    );*/
+}
+
+
+//Enviar los ids del personaje y el mapa del servidor
+//Mediante una petición POST donde el cuerpo es json
+function guardarPartida(personaje, mapa) {
+    console.log(personaje, mapa);
+    const params = {
+        mapId: mapa.uuid,
+        heroId: personaje.uuid,
+        mapName: mapa.displayName,
+        heroName: personaje.displayName
+    }
+    fetch('./guardarPartida.php', {
+        method: 'POST',
+        body: JSON.stringify(params)
+    })
 }
