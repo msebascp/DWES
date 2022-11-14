@@ -3,13 +3,13 @@
     require "obtenerRespuestaFormateada.php";
     $conexion = new Conexion();
     $conexion = $conexion->devolverConexion();
-    $id = $_GET['id'];
+    $id = $_GET['id'] ?? null;
     $name = $_POST['name'] ?? null;
     $description = $_POST['description'] ?? null;
     $nseries = $_POST['nseries'] ?? null;
     $state = $_POST['estate'] ?? 'No activo';
     $priority = $_POST['priority'] ?? null;
-    if(!is_null($id)) {
+    if(isset($id) && !empty($id) && !empty(trim($id))) {
         $sql="select * from monfab.elementos where id = $id";
         $sentencia=$conexion->query($sql);
         $resultado=$sentencia->fetchAll(PDO::FETCH_ASSOC);

@@ -4,7 +4,7 @@
     $conexion = new Conexion();
     $conexion = $conexion->devolverConexion();
     $id = $_GET['id'] ?? null;
-    if(!is_null($id)) {
+    if(isset($id) && !empty($id) && !empty(trim($id))) {
         $sql="select * from monfab.elementos where id = $id";
         $sentencia=$conexion->query($sql);
         $resultado=$sentencia->fetchAll(PDO::FETCH_ASSOC);
