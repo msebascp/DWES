@@ -1,1 +1,1 @@
-{"Nombre" : "", "Descripcion" : "", "Numero de serie" : "", "Estado" : "No activo", "Prioridad" : ""}
+{"Nombre" : "", "Descripcion" : "", "Numero de serie" : "", "Estado" : "No activo", "Prioridad" : ""}{"Nombre" : "sensor 1", "Descripcion" : "el mejor", "Numero de serie" : "1", "Estado" : "Activo", "Prioridad" : "Media"}

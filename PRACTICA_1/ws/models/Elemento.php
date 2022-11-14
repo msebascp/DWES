@@ -3,7 +3,7 @@
     class Elemento implements iToJson{
         private $name;
         private $description;
-        private $seriesNumber;
+        private $nseries;
         private $state;
         private $priority;
         //Constructor
@@ -11,7 +11,7 @@
         $state, $priority) {
             $this->name = $name;
             $this->description = $description;
-            $this->seriesNumber = $seriesNumber;
+            $this->nseries = $seriesNumber;
             $this->state = $state;
             $this->priority = $priority;
         }
@@ -19,7 +19,7 @@
         public function toJson() {
             $elementoInfo = '{"Nombre" : "'.$this->name.
                 '", "Descripcion" : "'.$this->description.
-                '", "Numero de serie" : "'.$this->seriesNumber.
+                '", "Numero de serie" : "'.$this->nseries.
                 '", "Estado" : "'.$this->state.
                 '", "Prioridad" : "'.$this->priority.'"}';
             return $elementoInfo;
@@ -42,13 +42,13 @@
         {
                 $this->description = $description;
         } 
-        public function getSeriesNumber()
+        public function getNseries()
         {
-                return $this->seriesNumber;
+                return $this->nseries;
         }
-        public function setSeriesNumber($seriesNumber)
+        public function setNseries($nseries)
         {
-                $this->seriesNumber = $seriesNumber;
+                $this->nseries = $nseries;
         }
         public function getState()
         {
