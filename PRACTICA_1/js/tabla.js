@@ -76,7 +76,24 @@ function editRow(editButtons) {
                     row.cells[j].appendChild(confirmButton);
                     confirmar(editButtons);
                 }
-                //Cambiamos el contenido de las celdas a inputs para editar la información
+                //Cambiamos el contenido de las celdas a inputs o desplegables para editar la información
+                else if(tabla.rows[0].cells[j].innerHTML == 'Estado') {
+                    let contenido = row.cells[j].innerHTML;
+                    row.cells[j].innerHTML = `<select>
+                    <option value="${contenido}">${contenido}</option>
+                    <option value="Activo">Activo</option>
+                    <option value="No activo">No activo</option>
+                    </select>`;
+                }
+                else if(tabla.rows[0].cells[j].innerHTML == 'Prioridad') {
+                    let contenido = row.cells[j].innerHTML;
+                    row.cells[j].innerHTML = `<select>
+                    <option value="${contenido}">${contenido}</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                    <option value="Baja">Baja</option>
+                    </select>`;
+                }
                 else {
                     let contenido = row.cells[j].innerHTML;
                     row.cells[j].innerHTML = `<input value = "${contenido}" style = "background-color:transparent; color:white; 
