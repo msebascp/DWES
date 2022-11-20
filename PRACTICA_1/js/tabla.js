@@ -8,11 +8,11 @@ const FILASDATA = [
     {name:'Sensor5', description:'El más económico', nserie:'005', estate:'No activo', priority:'Alta'},
     {name:'Sensor6', description:'El punto medio', nserie:'006', estate:'Activo', priority:'Baja'},
 ]
-const tabla = document.querySelector('#table');
+var tabla = document.querySelector('#table');
 const inputSearch = document.querySelector('#searchTable');
 
 function rellenarTabla() {
-    //String donde se guardará el contenido que se añadirá a la tabla
+    //Añadimos información a la tabla
     tabla.innerHTML = "<caption>Tabla de sensores</caption>";
     let theadTabla = document.createElement('thead');
     let tbodyTabla = document.createElement('tbody');
@@ -47,6 +47,7 @@ function rellenarTabla() {
     let editButtons = document.querySelectorAll('.editButton');
     editRow(editButtons);
 }
+//Oculta la fila de la cual se ha pulsado el botón de eliminar
 function deleteRow(buttons) {
     for(let i = 0; i < buttons.length; i++){
         buttons[i].onclick = () => {
@@ -55,57 +56,61 @@ function deleteRow(buttons) {
         }
     }
 }
-function editRow(buttons) {
-    let contenido;
-    
-    for(let i = 0; i < buttons.length; i++){
-        buttons[i].onclick = () => {
-            let row = buttons[i].parentNode.parentNode;
+//Edita la fila de la cual se ha pulsado el botón de editar
+function editRow(editButtons) {
+    for(let i = 0; i < editButtons.length; i++){
+        editButtons[i].onclick = () => {
+            //Con este for ocultamos todos los botonnes de editar
+            for(let editButton of editButtons){
+                editButton.setAttribute('style', 'display:none');
+            }
+            let row = editButtons[i].parentNode.parentNode;
             //Recorremos todas las celdas de la fila donde se encuentra el botón editar pulsado
-            for(let i = 0; i < row.cells.length; i++) {
-                //Ocultamos el botón de editar y añadimos uno para confirmar los cambios
-                if(i == row.cells.length - 1) {
+            for(let j = 0; j < row.cells.length; j++) {
+                //Ocultamos el botón de editar y eliminar y añadimos uno para confirmar los cambios
+                if(j == row.cells.length - 1) {
+                    row.cells[j].firstChild.setAttribute('style', 'display:none');
                     let confirmButton = document.createElement('button');
                     confirmButton.innerHTML = 'Confirmar';
-                    confirmButton.setAttribute('class', 'confirmButton');
-                    row.cells[i].lastElementChild.style.display = 'none';
-                    //row.cells[i].innerHTML += confirmButton.outerHTML;
-                    row.cells[i].appendChild(confirmButton);
-                    
+                    confirmButton.setAttribute('id', 'confirmButton');
+                    row.cells[j].appendChild(confirmButton);
+                    confirmar(editButtons);
                 }
                 //Cambiamos el contenido de las celdas a inputs para editar la información
                 else {
-                    contenido = row.cells[i].innerHTML;
-                    row.cells[i].innerHTML = `<input value = "${contenido}" style = "background-color:transparent; color:white; 
-                    width: ${row.cells[i].clientWidth-30}px; border:none; text-align:center; text-decoration:underline">`
+                    let contenido = row.cells[j].innerHTML;
+                    row.cells[j].innerHTML = `<input value = "${contenido}" style = "background-color:transparent; color:white; 
+                    width: ${row.cells[j].clientWidth-30}px; border:none; text-align:center; text-decoration:underline">`;
                 }
-                confirmar();
             }
         }
     }
 }
-function confirmar() {
-    let confirmButtons = document.querySelectorAll('.confirmButton');
-    for(let button of confirmButtons) {
-        button.addEventListener('click' , function(){
-            let row = this.parentNode.parentNode;
-            for(let i = 0; i < row.cells.length; i++) {
-                //Ocultamos el botón de confirmar y añadimos el botón de editar
-                if(i == row.cells.length - 1) {
-                    row.cells[i].removeChild(row.cells[i].lastElementChild);
-                    row.cells[i].lastElementChild.style.display = 'inline-block';
-                }
-                //Cambiamos el contenido de los inputs a texto normal de vuelta
-                else {
-                    contenido = row.cells[i].lastElementChild.value;
-                    row.cells[i].innerHTML = `${contenido}`;
-                }
+//Confirma los cambios hechos de la fila
+function confirmar(editButtons) {
+    let confirmButton = document.querySelector('#confirmButton');
+    confirmButton.onclick = () => {
+        //Volvemos a mostrar los botones de editar y el botón de eliminar de la fila
+        confirmButton.parentNode.firstChild.setAttribute('style', 'display:inline-block');
+        for(let editButton of editButtons){
+            editButton.setAttribute('style', 'display:inline-block');
+        }
+        let row = confirmButton.parentNode.parentNode;
+        for(let i = 0; i < row.cells.length; i++) {
+            //Eliminamos el botón de confirmar
+            if(i == row.cells.length - 1) {
+                row.cells[i].removeChild(row.cells[i].lastElementChild);
             }
-        })
+            //Cambiamos el contenido de los inputs a texto normal de vuelta
+            else {
+                contenido = row.cells[i].lastElementChild.value;
+                row.cells[i].innerHTML = `${contenido}`;
+            }
+        }
     }
 }
+//Controlamos los resultados del buscador
 function controlarInput(){
-    //Controlamos la búsqueda del input
     inputSearch.oninput = function() {
         //Pongo el fondo predeterminado en caso de que no haya resultados
         for(let columna of tabla.rows) {

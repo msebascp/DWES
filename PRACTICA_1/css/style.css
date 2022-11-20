@@ -22,15 +22,15 @@ body {
 #navLista li {
     display: inline;
 }
-#navLista li a {
+.linkNav {
     padding: 6px 15px 6px 15px;
     color: white;
     text-decoration: none;
     font-size:23px;
-}
-#navLista li a:hover {
-    background-color: #182625;
     border-radius: 15px;
+}
+.linkNav:hover {
+    background-color: #182625;
 }
 /*IMG LANDING*/
 #imgLanding img{
