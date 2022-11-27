@@ -9,7 +9,7 @@
     $nseries = $_POST['nseries'] ?? null;
     $state = $_POST['estate'] ?? 'No activo';
     $priority = $_POST['priority'] ?? null;
-    if(isset($id) && !empty($id) && !empty(trim($id))) {
+    try {
         $sql="select * from monfab.elementos where id = $id";
         $sentencia=$conexion->query($sql);
         $resultado=$sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -24,13 +24,12 @@
             $sentencia2=$conexion->query($sql);
             $succes = true;
             $message = "Elemento con id $id ha sido modificado correctamente";
-            $resultado = array("nombre"=>$name, "descripcion"=>$description, "nserie"=>$nseries, "estado"=>$state, "prioridad"=>$priority);
+            $resultado = ["nombre"=>$name, "descripcion"=>$description, "nseries"=>$nseries, "estado"=>$state, "prioridad"=>$priority];
         }
-    }
-    else {
+    } catch (PDOException $e) {
         $succes = false;
         $message = 'ERROR Id';
         $resultado = null;
     }
-    obtenerRespuestaFormateada($succes, $message, $resultado);
+    print obtenerRespuestaFormateada($succes, $message, $resultado);
 ?>

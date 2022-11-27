@@ -3,7 +3,7 @@
     $name = $_POST['name'] ?? null;
     $description = $_POST['description'] ?? null;
     $nseries = $_POST['nseries'] ?? null;
-    $state = (isset($_POST['state'])) ? $_POST['state'] : "No activo";
+    $state = $_POST['state'] ?? "No activo";
     $priority = $_POST['priority'] ?? null;
     $elemento = new Elemento($name, $description, $nseries, $state, $priority);
     $elementoInfo = $elemento->toJson();

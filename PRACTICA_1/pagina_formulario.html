@@ -6,27 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Formulario</title>
 </head>
 <body>
     <div id="container">
-        <form id="formulario" action="./ws/crearElemento.php" method="post" class="form">
+        <form id="formulario" action="./ws/createElement2.php" method="post" class="form">
             <h1 id="tituloForm">Introduce los datos del sensor:</h1>
             <p>Nombre</p>
-            <input type="text" name="name" class="input">
+            <label>
+                <input class="input" name="name" type="text">
+            </label>
             <p>Descripción</p>
-            <input type="text" name="description" class="input">
+            <label>
+                <input class="input" name="description" type="text">
+            </label>
             <p>Número de serie</p>
-            <input type="text" name="nseries" class="input">
+            <label>
+                <input class="input" name="nseries" type="text">
+            </label>
             <p>Estado</p>
-            <input type="checkbox" name="state" value="Activo" class="input"> Activo 
+            <label>
+                <input class="input" name="state" type="checkbox" value="Activo">
+            </label> Activo
             <p>Prioridad</p>
-            <input type="radio" name="priority"  value="Alta" class="input"> Alta
-            <input type="radio" name="priority"  value="Media" class="input"> Media
-            <input type="radio" name="priority"  value="Baja" class="input"> Baja <br>
-            <button type="submit"  id="botonForm">Confirmar</button>
+            <label>
+                <input class="input" name="priority" type="radio" value="Alta">
+            </label> Alta
+            <label>
+                <input class="input" name="priority" type="radio" value="Media">
+            </label> Media
+            <label>
+                <input class="input" name="priority" type="radio" value="Baja">
+            </label> Baja <br>
+            <button id="botonForm">Confirmar</button>
         </form>
     </div>
     <script src="./js/nav.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/alerts.js"></script>
 </body>
 </html>
