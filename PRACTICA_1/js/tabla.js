@@ -12,7 +12,8 @@ const checkAlertDelete = (row) => {
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: '¡Sí!'
+    confirmButtonText: '¡Sí!',
+    cancelButtonText: 'Cancelar'
   }).then(function (result) {
     if (result.isConfirmed) {
       tabla.deleteRow(row.rowIndex)
@@ -31,6 +32,7 @@ const checkAlertEdit = (dataPreEdit) => {
       showCancelButton: true,
       confirmButtonText: 'Guardar',
       denyButtonText: 'No guardar',
+      cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
         saveRow(confirmButton)
@@ -46,7 +48,6 @@ const loadData = async () => {
   try {
     const promise = await fetch(URL_GET)
     const response = await promise.json()
-    console.log(response)
     if (response.success) {
       fillTable(response.data)
     } else {
@@ -61,7 +62,6 @@ const deleteData = async (id) => {
   try {
     const promise = await fetch(URL_DELETE + id)
     const response = await promise.json()
-    console.log(response)
     if (response.success) {
       Swal.fire('¡Elemento eliminado!')
     } else {
@@ -110,8 +110,8 @@ function fillTable (elements) {
         trTabla.setAttribute('id', elements[i].id)
       }
     }
-    trTabla.innerHTML += '<td><button class = "deleteButton">X</button> \
-            <button class = "editButton">Editar</button></td>'
+    trTabla.innerHTML += '<td><button class = "deleteButton"><img src="./media/deleteIcon.png" width="25px"></button> \
+            <button class = "editButton"><img src="./media/editIcon.png" width="25px"></button></td>'
     tbodyTabla.appendChild(trTabla)
   }
   tabla.appendChild(tbodyTabla)
@@ -150,7 +150,7 @@ function editRow (editButtons) {
         if (j === row.cells.length - 1) {
           row.cells[j].firstChild.setAttribute('style', 'display:none')
           let confirmButton = document.createElement('button')
-          confirmButton.innerHTML = 'Confirmar'
+          confirmButton.innerHTML = '<img src="./media/confirmIcon.png" width="25px">'
           confirmButton.setAttribute('id', 'confirmButton')
           row.cells[j].appendChild(confirmButton)
           checkAlertEdit(arrRowPreEdit)

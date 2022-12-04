@@ -27,7 +27,8 @@ const checkAlertForm = (event) => {
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
-    confirmButtonText: '¡Sí!'
+    confirmButtonText: '¡Sí!',
+    cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
       createElement()
