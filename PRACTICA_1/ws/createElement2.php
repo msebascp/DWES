@@ -9,10 +9,10 @@
 	$state = $_POST['state'] ?? "No activo";
 	$priority = $_POST['priority'] ?? null;
 	$success = false;
-	$message = 'ERROR. El elemento no se ha creado';
+	$message = 'ERROR. El elemento no se ha creado, algún elemento no está definido';
 	$resultado = null;
 	//Crear elemento
-	if (!is_null($name) && !is_null($description) && !is_null($nseries) && !is_null($priority)) {
+	if (!empty($name) && !empty($description) && !empty($nseries) && !is_null($priority)) {
 		$sql = "insert into elementos set nombre =  \"$name\", descripcion = \"$description\", 
         nserie = \"$nseries\", estado = \"$state\", prioridad = \"$priority\"";
 		try {
