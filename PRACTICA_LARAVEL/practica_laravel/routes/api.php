@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AlumnoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/alumnos')->group(function () {
+    Route::get('', [AlumnoController::class, 'getAll']);
+    Route::middleware('ValidateId')->get('/{id}', [AlumnoController::class, 'getById']);
+    Route::post('', [AlumnoController::class, 'create']);
+    Route::middleware('ValidateId')->delete('/{id}', [AlumnoController::class, 'delete']);
 });
+
