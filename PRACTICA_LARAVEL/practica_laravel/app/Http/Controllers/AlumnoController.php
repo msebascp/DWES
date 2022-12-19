@@ -39,7 +39,7 @@ class AlumnoController extends Controller
             'telefono' => 'nullable|string',
             'edad' => 'nullable|integer',
             'password' => 'string',
-            'email' => 'unique:alumnos|string',
+            'email' => 'string',
             'sexo' => 'string'
         ]);
         Alumno::findorfail($id)->update($datos);
