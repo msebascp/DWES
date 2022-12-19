@@ -42,6 +42,6 @@ class AlumnoController extends Controller
             'email' => 'unique:alumnos|string',
             'sexo' => 'string'
         ]);
-        Alumno::find($id)->update($datos);
+        Alumno::findorfail($id)->update($datos);
     }
 }
