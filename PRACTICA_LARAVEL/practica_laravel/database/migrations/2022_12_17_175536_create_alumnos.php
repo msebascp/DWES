@@ -20,7 +20,6 @@
                 $table->string('password')->nullable(false);
                 $table->string('email')->unique();
                 $table->string('sexo');
-                $table->timestamps();
             });
         }
 

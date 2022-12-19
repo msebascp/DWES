@@ -16,8 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/alumnos')->group(function () {
     Route::get('', [AlumnoController::class, 'getAll']);
-    Route::middleware('ValidateId')->get('/{id}', [AlumnoController::class, 'getById']);
     Route::post('', [AlumnoController::class, 'create']);
+    Route::middleware('ValidateId')->get('/{id}', [AlumnoController::class, 'getById']);
+    Route::middleware('ValidateId')->put('/{id}', [AlumnoController::class, 'update']);
     Route::middleware('ValidateId')->delete('/{id}', [AlumnoController::class, 'delete']);
 });
 

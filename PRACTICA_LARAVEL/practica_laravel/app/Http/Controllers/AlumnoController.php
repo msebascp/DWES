@@ -18,16 +18,10 @@ class AlumnoController extends Controller
     }
     public function create(Request $request)
     {
-        $name = $request->input('name');
-        $telefono = $request->input('telefono');
-        $edad = $request->input('edad');
-        $password = $request->input('password');
-        $email = $request->input('email');
-        $sexo = $request->input('sexo');
         $datos = $request->validate([
-            'name' => 'string',
-            'telefono' => 'string',
-            'edad' => 'integer',
+            'nombre' => 'string',
+            'telefono' => 'nullable|string',
+            'edad' => 'nullable|integer',
             'password' => 'string',
             'email' => 'unique:alumnos|string',
             'sexo' => 'string'
@@ -37,6 +31,17 @@ class AlumnoController extends Controller
     public function delete(Request $request, $id)
     {
         DB::table('alumnos')->where('id', $id)->delete();
-        //return response()->json('Elimino todas las mascotas');
+    }
+    public function update(Request $request, $id)
+    {
+        $datos = $request->validate([
+            'nombre' => 'string',
+            'telefono' => 'nullable|string',
+            'edad' => 'nullable|integer',
+            'password' => 'string',
+            'email' => 'unique:alumnos|string',
+            'sexo' => 'string'
+        ]);
+        Alumno::find($id)->update($datos);
     }
 }
