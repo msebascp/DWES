@@ -15,7 +15,7 @@ class PetSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=4; $i < 11; $i++) {
+        for ($i=1; $i < 11; $i++) {
             Pet::factory()->create([
                 'owner_id' => $i,
             ]);

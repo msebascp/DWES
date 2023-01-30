@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             $table->string('name', 32)->nullable(false);
-            $table->string('phone', 16)->nullable(false);
-            $table->string('email')->unique();
+            $table->string('phone', 16)->nullable();
+            $table->string('email')->unique()->nullable(false);
+            $table->string('password')->nullable(false);
             $table->unsignedInteger('age')->nullable();
+            $table->rememberToken();
+            $table->string('api_token', 80);
             $table->timestamps();
         });
     }

@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('name', 32);
             $table->unsignedInteger('age')->nullable();
             $table->string('chip', 32)->nullable();
-            $table->unsignedBigInteger('owner_id')->unique();
-            $table->foreign('owner_id')->references('id')->on('owners');
+            $table->foreignId('owner_id')->constrained('owners');
             $table->timestamps();
         });
     }
