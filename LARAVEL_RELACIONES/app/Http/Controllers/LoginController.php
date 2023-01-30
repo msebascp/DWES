@@ -32,12 +32,12 @@ class LoginController extends Controller
             return response()->json([
                 "success " => false,
                 "message" => "El usuario no existe"
-            ]);
-        } elseif (Hash::check($request->password, $user->password)) {
+            ], 401);
+        } elseif (!Hash::check($request->password, $user->password)) {
             return response()->json([
                 "success" => false,
                 "message" => "Contraseña incorrecta"
-            ]);
+            ], 401);
         }
         $user->api_token = $user->createToken("token")->plainTextToken;
         $user->save();
@@ -45,7 +45,7 @@ class LoginController extends Controller
             "success" => true,
             "message" => "El usuario se ha logueado",
             "data" => [
-                $user
+                "token" => $user->api_token
             ]
         ]);
     }
@@ -74,6 +74,9 @@ class LoginController extends Controller
 
     public function me(Request $request)
     {
+        if (is_null($request->bearerToken())){
+            echo "holaa:(";
+        }
         return response()->json([
             "success" => true,
             "message" => "Datos de usuario: ",
@@ -85,7 +88,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::user()->api_token = '';
+        Auth::user()->api_token = null;
         Auth::user()->save();
         return response()->json([
             "success" => true,

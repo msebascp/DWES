@@ -29,6 +29,6 @@ Route::middleware('ValidateId')->get('/toy/{id}/pet', [ToyController::class, 'pe
 
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/register', [LoginController::class, 'register']);
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::middleware('AuthLogin')->post('/logout', [LoginController::class, 'logout']);
 Route::middleware('AuthLogin')->get('/me', [LoginController::class, 'me']);
 Route::middleware('AuthLogin')->get('/logout', [LoginController::class, 'logout']);

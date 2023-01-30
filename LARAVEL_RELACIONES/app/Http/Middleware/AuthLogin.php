@@ -25,6 +25,6 @@ class AuthLogin
         return response()->json([
             "success" => false,
             "message" => "Necesita iniciar sesión"
-        ]);
+        ], 401);
     }
 }
