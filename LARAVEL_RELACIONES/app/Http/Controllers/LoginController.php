@@ -74,9 +74,6 @@ class LoginController extends Controller
 
     public function me(Request $request)
     {
-        if (is_null($request->bearerToken())){
-            echo "holaa:(";
-        }
         return response()->json([
             "success" => true,
             "message" => "Datos de usuario: ",

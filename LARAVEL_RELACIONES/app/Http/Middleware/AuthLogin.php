@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Owner;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthLogin
 {
@@ -17,7 +18,14 @@ class AuthLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        $token = $request->bearerToken();
+        if (Auth::check()){
+            return $next($request);
+        }
+        return response()->json([
+            "success" => false,
+            "message" => "Necesita iniciar sesión"
+        ], 401);
+        /**$token = $request->bearerToken();
         $user = Owner::where('api_token', '=', $token)->first();
         if (!empty($user)){
             return $next($request);
@@ -25,6 +33,6 @@ class AuthLogin
         return response()->json([
             "success" => false,
             "message" => "Necesita iniciar sesión"
-        ], 401);
+        ], 401); **/
     }
 }
