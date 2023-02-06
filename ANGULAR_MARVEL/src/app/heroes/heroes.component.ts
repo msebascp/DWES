@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import {Component, OnInit} from '@angular/core';
+import {MarvelService} from "../marvel/marvel.service";
+import {Character} from "../marvel/character";
 
 @Component({
   selector: 'app-heroes',
@@ -9,31 +8,34 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  heroes: Hero[] = [];
-
-  constructor(private heroService: HeroService) { }
+  heroes: Character[] = [];
+  offset: number = 0;
+  total: number = 0;
+  limit: number = 0;
+  constructor(private marvelService: MarvelService) {
+  }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getHeroesLimit(this.offset);
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-    .subscribe(heroes => this.heroes = heroes);
+  nextOffset():void {
+      this.offset += 20;
+      this.getHeroesLimit(this.offset);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
-      });
+  previousOffset():void {
+      this.offset -= 20;
+      this.getHeroesLimit(this.offset);
   }
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
+  getHeroesLimit(offset: number): void {
+    this.marvelService.getHeroesOffset(offset)
+      .subscribe((heroes => {
+        this.heroes = heroes.data.results;
+        this.total = heroes.data.total;
+        this.limit = heroes.data.limit;
+        console.log(heroes.data);
+      }))
   }
-
 }

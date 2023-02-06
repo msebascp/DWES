@@ -1,10 +1,20 @@
-<div *ngIf="hero">
-  <h2>{{hero.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label for="hero-name">Hero name: </label>
-    <input id="hero-name" [(ngModel)]="hero.name" placeholder="Hero name"/>
+<div *ngIf="hero" class="mx-4 sm:mx-12">
+  <div class="mt-4 text-xl font-normal sm:grid sm:grid-cols-2 sm:grid-rows-1 lg:grid-cols-3">
+    <div class="sm:col-start-1 sm:row-start-1">
+      <h2 class="text-2xl font-medium mb-3">Detalles:</h2>
+      <h3 class="mb-2">Id: {{hero.id}}</h3>
+      <h3 class="mb-2">Hero name: {{hero.name}}</h3>
+      <h3 class="mb-2">Aparece en un total de {{hero.comics.returned}} cómics</h3>
+    </div>
+    <div class="lg:max-h-[500px] lg:col-span-2">
+      <img  src="{{hero.thumbnail.path+'.'+hero.thumbnail.extension}}"
+            class="h-full">
+    </div>
+    <div class="sm:col-start-1 sm:row-start-1 sm:h-fit sm:mt-auto">
+      <button type="button"
+              (click)="goBack()"
+              class="my-4 px-3 py-2 rounded-md text-white text-xl bg-[#256573] hover:bg-[#F01D2D] hover:text-black"
+      >Go back</button>
+    </div>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
 </div>
