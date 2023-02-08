@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MyPassportController;
 use App\Http\Controllers\ToyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +28,8 @@ Route::middleware('ValidateId')->get('/pet/{id}/owner', [PetController::class, '
 Route::middleware('ValidateId')->get('/pet/{id}/toys', [PetController::class, 'toys']);
 Route::middleware('ValidateId')->get('/toy/{id}/pet', [ToyController::class, 'pet']);
 
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [LoginController::class, 'register']);
-Route::middleware('AuthLogin')->post('/logout', [LoginController::class, 'logout']);
-Route::middleware('AuthLogin')->get('/me', [LoginController::class, 'me']);
-Route::middleware('AuthLogin')->get('/logout', [LoginController::class, 'logout']);
+Route::post('/login', [MyPassportController::class, 'login']);
+Route::post('/register', [MyPassportController::class, 'register']);
+Route::middleware('AuthLogin')->get('/me', [MyPassportController::class, 'me']);
+Route::middleware('AuthLogin')->get('/logout', [MyPassportController::class, 'logout']);
+Route::middleware('AuthLogin')->get('/endpoint', [MyPassportController::class, 'endpoint']);

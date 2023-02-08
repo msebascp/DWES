@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable(false);
             $table->string('password')->nullable(false);
             $table->unsignedInteger('age')->nullable();
+            $table->rememberToken();
             $table->string('api_token', 80)->nullable();
             $table->timestamps();
         });
