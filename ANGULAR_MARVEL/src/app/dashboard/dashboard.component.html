@@ -1,15 +1,26 @@
-<div class="mx-4 sm:mx-12">
-  <h1 class="text-3xl font-medium mb-4 md:text-center">Random Heroes</h1>
-  <div class="heroes-menu grid grid-cols-2 place-items-center
-  sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-    <div class="w-11/12 h-56  mb-6
-    md:h-80" *ngFor="let hero of heroes">
+<div class="sm:mx-12">
+  <h1 class="mx-4 sm:mx-0 text-3xl font-medium mb-4 md:text-center">Personajes random</h1>
+  <!--Personajes random-->
+  <div class="heroes-menu bg-[#34A59B] px-4 pt-2
+  sm:grid-cols-3 sm:grid sm:px-0  sm:pt-0  sm:bg-transparent sm:gap-4
+  lg:grid-cols-4
+  xl:grid-cols-5">
+    <div class="pb-2
+    sm:w-full sm:h-56  sm:mb-0
+    md:h-80"
+    *ngFor="let hero of heroes">
       <a routerLink="/detail/{{hero.id}}"
-        class="">
-        <div class="h-full bg-cover flex place-content-center items-center grayscale hover:grayscale-0 hover:scale-105"
-            [style.background-image]="'url(' + hero.thumbnail.path + '.' + hero.thumbnail.extension + ')'">
-          <h3 class=" text-center mt-auto w-full font-medium text-xl text-white bg-[#34A59B]/80">{{hero.name}}</h3>
+      class="w-full flex items-center justify-between border-y hover:scale-105
+      sm:border-0 sm:hover:scale-100 sm:w-auto sm:inline">
+        <div class="inline-block bg-cover h-16 w-16 rounded-full
+        sm:rounded-none sm:w-auto sm:h-full sm:bg-cover sm:flex sm:place-content-center sm:items-center sm:grayscale sm:hover:grayscale-0 sm:hover:scale-105"
+        [style.background-image]="'url(' + hero.thumbnail.path + '.' + hero.thumbnail.extension + ')'">
+          <h3 class="sm:block sm:text-center sm:mt-auto sm:w-full sm:font-medium sm:text-xl sm:text-white sm:bg-[#34A59B]/80
+          hidden">{{hero.name}}</h3>
         </div>
+        <h3 class="inline-block font-medium text-lg
+        sm:hidden">
+        {{hero.name}}</h3>
       </a>
     </div>
   </div>
