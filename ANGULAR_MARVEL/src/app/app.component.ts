@@ -2,7 +2,8 @@
 //public key: 6a6c73f102254216403292f530e1986e
 //http://gateway.marvel.com/v1/public/comics?ts=patata&apikey=6a6c73f102254216403292f530e1986e&hash=c919203fbd650a3f0dc19c356004c884
 
-import { Component } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  currentRoute!: string;
+
+  constructor(private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
+  }
+
+  showElement(): boolean {
+    return this.currentRoute == '/heroes';
+  }
 }

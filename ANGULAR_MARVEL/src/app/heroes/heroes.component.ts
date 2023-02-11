@@ -35,7 +35,6 @@ export class HeroesComponent implements OnInit {
         this.heroes = heroes.data.results;
         this.total = heroes.data.total;
         this.limit = heroes.data.limit;
-        console.log(heroes.data);
       }))
   }
 }

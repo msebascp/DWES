@@ -1,16 +1,21 @@
-<h1 class=" bg-[#A50D18] text-3xl text-center text-white font-bold py-2 w-full">
+<h1 class="bg-cover bg-top text-3xl text-center text-white font-bold py-2 w-full
+md:py-5 md:text-5xl"
+style="background-image: url('../assets/banner.jpeg');">
   MARVEL OFFICIAL
 </h1>
-<nav class="mx-4 py-2 mt-2 mb-3
-      sm:ml-12 sm:my-6 md:inline-block md:align-top">
-  <a routerLink="/dashboard"
-    class="p-1 mr-1 rounded-md font-medium text-2xl bg-[#F01D2D] hover:bg-[#256573] hover:text-white">
-      Dashboard
-  </a>
-  <a routerLink="/heroes"
-    class="p-1 ml-1 rounded-md font-medium text-2xl bg-[#F01D2D] hover:bg-[#256573] hover:text-white">
-    Heroes
-  </a>
-</nav>
+<div class="mx-4 py-2 mt-2 mb-3
+sm:mx-12 sm:my-6 lg:grid lg:grid-cols-2">
+  <nav class="lg:inline">
+    <a routerLink="/dashboard"
+      class="py-1 px-2 mr-1 rounded-md text-white font-medium text-2xl bg-[#F01D2D] hover:bg-[#256573] hover:text-white">
+        Dashboard
+    </a>
+    <a routerLink="/heroes"
+      class="py-1 px-2 ml-1 rounded-md text-white  font-medium text-2xl bg-[#F01D2D] hover:bg-[#256573] hover:text-white">
+      Heroes
+    </a>
+  </nav>
+  <app-hero-search *ngIf="showElement()"></app-hero-search>
+</div>
 <router-outlet></router-outlet>
 <!--<app-messages></app-messages>-->

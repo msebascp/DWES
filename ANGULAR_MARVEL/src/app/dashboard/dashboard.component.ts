@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(offset: number): void {
-    this.marvelService.getHeroesOffset(offset)
+    this.marvelService.getHeroesOffset(offset, 10)
       .subscribe((heroes => {
         this.heroes = heroes.data.results;
       }))

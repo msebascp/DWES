@@ -24,15 +24,15 @@ export class MarvelService {
       return of([]);
     }
     console.log('Hago petición con ' + text)
-    return this.http.get<ResponseMarvel>(this.marvelUrl + `&nameStartsWith=${text}&limit=8`).
+    return this.http.get<ResponseMarvel>(this.marvelUrl + `&nameStartsWith=${text}&limit=4`).
       pipe(map((data: ResponseMarvel) => {
         console.log(data.data.results);
         return data.data.results;
     }));
   }
 
-  getHeroesOffset(offset: number): Observable<ResponseMarvel> {
-    return this.http.get<ResponseMarvel>(this.marvelUrl + `&offset=${offset}`)
+  getHeroesOffset(offset: number, limit:number = 20): Observable<ResponseMarvel> {
+    return this.http.get<ResponseMarvel>(this.marvelUrl + `&offset=${offset} + &limit=${limit}`)
   }
 
   getHeroId(id: number): Observable<ResponseMarvel> {

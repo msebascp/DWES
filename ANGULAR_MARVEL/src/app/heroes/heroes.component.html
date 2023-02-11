@@ -1,6 +1,5 @@
-<app-hero-search></app-hero-search>
 <div  class="mx-4 sm:mx-12">
-  <h2 class="text-2xl font-medium mb-4">Todos los personajes</h2>
+  <h2 class="text-3xl font-medium mb-4 md:text-center">Todos los personajes</h2>
   <div class="heroes-menu grid grid-cols-2 place-items-center sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
     <div class="w-11/12 h-56  mb-6
     md:h-80" *ngFor="let hero of heroes">
@@ -18,8 +17,8 @@
             class="text-xl font-medium m-2 rounded-full px-2 py-0.5">
       <i class="fa fa-chevron-circle-left text-[#34A59B] text-3xl"></i>
     </button>
-    <h3 *ngIf="offset + limit < total">{{offset + 1}} - {{offset + limit + 1}} de {{total + 1}}</h3>
-    <h3 *ngIf="offset + limit > total">{{offset + 1}} - {{total + 1}} de {{total + 1}}</h3>
+    <h3 *ngIf="offset + limit < total">{{offset + 1}} - {{offset + limit}} de {{total}}</h3>
+    <h3 *ngIf="offset + limit > total">{{offset + 1}} - {{total}} de {{total}}</h3>
     <button (click)="nextOffset()"
             [disabled]="offset + limit > total"
             class="text-xl font-medium m-2 rounded-full px-2 py-0.5">

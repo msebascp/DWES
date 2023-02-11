@@ -1,13 +1,15 @@
-<div id="search-component" class="mb-4 px-4 sm:pl-12 md:inline-block md:w-1/2 md:m-8">
+<div id="search-component" class="mt-4 md:mt-6 lg:mt-0 lg:float-right lg:w-[576px]">
   <input
-    class="max-w-xl w-full rounded-t-sm py-1 px-2 text-xl border-2 focus:border-[#34A59B] focus-visible:outline-none"
+    class="max-w-xl w-full rounded-sm py-1 px-2 text-xl focus-visible:outline-[#34A59B]"
     type="search"
     id="inputSearch"
     placeholder="Busca por nombre..."
     #searchBox
     (input)="search(searchBox.value)"
+    (blur)="hide()"
+    (focus)="showResultList = true"
   >
-  <ul class="search-result max-w-xl w-full rounded-b-sm bg-white">
+  <ul [ngStyle]="{'display': showResultList ? 'block' : 'none'}" class="search-result absolute z-50 max-w-xl w-full rounded-sm bg-white">
     <li *ngFor="let hero of heroes$ | async">
       <a routerLink="/detail/{{hero.id}}"
       class="block py-1 px-2 w-full hover:bg-[#34A59B]">

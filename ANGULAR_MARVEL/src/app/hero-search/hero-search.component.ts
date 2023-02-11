@@ -13,6 +13,7 @@ import {MarvelService} from "../marvel/marvel.service";
   styleUrls: ['./hero-search.component.css']
 })
 export class HeroSearchComponent implements OnInit {
+  showResultList: boolean = false;
   heroes$: Observable<Character[]> = of([]);
   searchTerms: Subject<string> = new Subject<string>();
 
@@ -31,6 +32,12 @@ export class HeroSearchComponent implements OnInit {
         return this.marvelService.searchHeroes(term)
       }));
     console.log(this.heroes$)
+  }
+
+  hide() {
+    setTimeout(() => {
+      this.showResultList = false;
+    }, 150);
   }
 
   // Push a search term into the observable stream.
