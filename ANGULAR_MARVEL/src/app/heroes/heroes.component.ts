@@ -12,6 +12,7 @@ export class HeroesComponent implements OnInit {
   offset: number = 0;
   total: number = 0;
   limit: number = 0;
+
   constructor(private marvelService: MarvelService) {
   }
 
@@ -19,14 +20,14 @@ export class HeroesComponent implements OnInit {
     this.getHeroesLimit(this.offset);
   }
 
-  nextOffset():void {
-      this.offset += 20;
-      this.getHeroesLimit(this.offset);
+  nextOffset(): void {
+    this.offset += 20;
+    this.getHeroesLimit(this.offset);
   }
 
-  previousOffset():void {
-      this.offset -= 20;
-      this.getHeroesLimit(this.offset);
+  previousOffset(): void {
+    this.offset -= 20;
+    this.getHeroesLimit(this.offset);
   }
 
   getHeroesLimit(offset: number): void {

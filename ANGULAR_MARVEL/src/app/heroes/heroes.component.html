@@ -1,39 +1,48 @@
-<div  class="sm:mx-12">
+<div class="sm:mx-12">
   <h2 class="mx-4 text-3xl font-medium mb-4
-  sm:text-center sm:mx-12">Todos los personajes</h2>
+      sm:text-center sm:mx-12">
+    Todos los personajes
+  </h2>
   <!--Lista de personajes-->
   <div class="heroes-menu bg-[#34A59B] px-4 pt-2
-  sm:grid-cols-3 sm:grid sm:px-0  sm:pt-0  sm:bg-transparent sm:gap-4
-  lg:grid-cols-4
-  xl:grid-cols-5">
+       sm:grid-cols-3 sm:grid sm:px-0  sm:pt-0  sm:bg-transparent sm:gap-4
+       lg:grid-cols-4
+       xl:grid-cols-5">
     <div class="pb-4
-    sm:w-full sm:h-56 sm:mb-0 sm:pb-0
-    md:h-80"
-    *ngFor="let hero of heroes">
+         sm:w-full sm:h-56 sm:mb-0 sm:pb-0
+         md:h-80"
+         *ngFor="let hero of heroes">
       <a routerLink="/detail/{{hero.id}}"
-      class="w-full flex items-center justify-between border-y hover:scale-105
-      sm:border-0 sm:hover:scale-100 sm:w-auto sm:inline">
+         class="w-full flex items-center justify-between border-y hover:scale-105
+         sm:border-0 sm:hover:scale-100 sm:w-auto sm:inline">
         <div class="inline-block bg-cover h-16 w-16 rounded-full
-        sm:rounded-none sm:w-auto sm:h-full sm:bg-cover sm:flex sm:place-content-center sm:items-center sm:grayscale sm:hover:grayscale-0 sm:hover:scale-105"
-        [style.background-image]="'url(' + hero.thumbnail.path + '.' + hero.thumbnail.extension + ')'">
+             sm:rounded-none sm:w-auto sm:h-full sm:bg-cover sm:flex sm:place-content-center sm:items-center sm:grayscale sm:hover:grayscale-0 sm:hover:scale-105"
+             [style.background-image]="'url(' + hero.thumbnail.path + '.' + hero.thumbnail.extension + ')'">
           <h3 class="sm:block sm:text-center sm:mt-auto sm:w-full sm:font-medium sm:text-xl sm:text-white sm:bg-[#34A59B]/80
-          hidden">{{hero.name}}</h3>
+              hidden">
+            {{hero.name}}
+          </h3>
         </div>
         <h3 class="inline-block font-medium text-lg
-        sm:hidden">
-        {{hero.name}}</h3>
+            sm:hidden">
+          {{hero.name}}
+        </h3>
       </a>
     </div>
   </div>
   <!--Paginación-->
   <div class="mx-4 mb-3 flex place-content-center items-center
-  sm:mx-12">
+       sm:mx-12">
     <button (click)="previousOffset()" [disabled]="offset < limit"
             class="text-xl font-medium m-2 rounded-full px-2 py-0.5">
       <i class="fa fa-chevron-circle-left text-[#34A59B] text-3xl"></i>
     </button>
-    <h3 *ngIf="offset + limit < total">{{offset + 1}} - {{offset + limit}} de {{total}}</h3>
-    <h3 *ngIf="offset + limit > total">{{offset + 1}} - {{total}} de {{total}}</h3>
+    <h3 *ngIf="offset + limit < total">
+      {{offset + 1}} - {{offset + limit}} de {{total}}
+    </h3>
+    <h3 *ngIf="offset + limit > total">
+      {{offset + 1}} - {{total}} de {{total}}
+    </h3>
     <button (click)="nextOffset()"
             [disabled]="offset + limit > total"
             class="text-xl font-medium m-2 rounded-full px-2 py-0.5">
