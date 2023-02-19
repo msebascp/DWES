@@ -25,14 +25,5 @@ class AuthLogin
             "success" => false,
             "message" => "Necesita iniciar sesión"
         ], 401);
-        /**$token = $request->bearerToken();
-        $user = Owner::where('api_token', '=', $token)->first();
-        if (!empty($user)){
-            return $next($request);
-        }
-        return response()->json([
-            "success" => false,
-            "message" => "Necesita iniciar sesión"
-        ], 401); **/
     }
 }

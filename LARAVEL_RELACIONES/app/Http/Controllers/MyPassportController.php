@@ -19,8 +19,8 @@ class MyPassportController extends Controller
         ]);
         $data['password'] = Hash::make($data['password']);
         $user = new Owner($data);
-        $user->save();
         $token = $user->createToken('myToken')->accessToken;
+        $user->save();
         return response()->json([
             "success" => true,
             "message" => "Usuario registrado",
