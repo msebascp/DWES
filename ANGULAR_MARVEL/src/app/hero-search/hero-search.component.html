@@ -1,4 +1,4 @@
-<div id="search-component" class="mt-4 md:mt-6 lg:mt-0 lg:float-right lg:w-[576px]">
+<div id="search-component" class="relative mt-4 md:mt-6 lg:mt-0 lg:float-right lg:w-[576px]">
   <input
     class="max-w-xl w-full rounded-sm py-1 px-2 text-xl focus-visible:outline-[#34A59B]"
     type="search"
@@ -9,7 +9,7 @@
     (blur)="hide()"
     (focus)="showResultList = true"
   >
-  <ul [ngStyle]="{'display': showResultList ? 'block' : 'none'}" class="search-result absolute z-50 max-w-xl w-full rounded-sm bg-white">
+  <ul [ngStyle]="{'display': showResultList ? 'block' : 'none'}" class="search-result absolute z-50 max-w-xl w-full rounded-sm bg-white right-0">
     <li *ngFor="let hero of heroes$ | async">
       <a routerLink="/detail/{{hero.id}}"
       class="block py-1 px-2 w-full hover:bg-[#34A59B]">

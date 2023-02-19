@@ -8,15 +8,15 @@ style="background-image: url('../assets/bg-marvel.jpg');">
   <div class="mt-4 text-lg font-normal text-white
   md:px-6 md:basis-2/5 lg:basis-[55%]">
     <div class="sm:col-start-1 sm:row-start-1">
-      <h2 class="text-2xl font-medium mb-3">Detalles:</h2>
-      <div class="mb-3">
-        <h3 class="inline-block mr-2 text-xl font-medium">Id:</h3> <h3 class="inline-block">{{hero.id}}</h3>
+      <h2 class="text-2xl font-medium mb-3 backdrop-blur-sm  lg:mb-7 w-fit">Detalles:</h2>
+      <div class="mb-3 lg:mb-7 w-fit">
+        <h3 class="inline-block mr-2 text-xl font-medium backdrop-blur-sm">Id:</h3> <h3 class="inline-block backdrop-blur-sm">{{hero.id}}</h3>
       </div>
-      <div class="mb-3">
-        <h3 class="inline-block mr-2 text-xl font-medium">Hero name:</h3> <h3 class="inline">{{hero.name}}</h3>
+      <div class="mb-3 lg:mb-7">
+        <h3 class="inline-block mr-2 text-xl font-medium backdrop-blur-sm">Hero name:</h3> <h3 class="inline-block backdrop-blur-sm">{{hero.name}}</h3>
       </div>
-      <h3 class="font-medium text-xl">Descripción:</h3>
-      <h3 class="mb-2">{{hero.description}} Aparece en un total de {{hero.comics.returned}} cómics</h3>
+      <h3 class="font-medium text-xl backdrop-blur-sm">Descripción:</h3>
+      <h3 class="mb-2 backdrop-blur-sm  lg:mb-7">{{hero.description}} Aparece en un total de {{hero.comics.returned}} cómics</h3>
       <button type="button"
               (click)="goBack()"
               class="my-4 px-3 py-2 rounded-md text-white font-medium text-xl bg-[#F01D2D] hover:bg-[#256573]"
